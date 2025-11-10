@@ -1,0 +1,12 @@
+easy:
+  # noinspection SpringBootApplicationYaml
+  is-production: true
+  secret:
+  cache:
+    type: ehcache
+    prefix: easy_
+    time-to-live: 14400
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
