@@ -206,13 +206,21 @@ public class DateTimeUtil {
         }
 
         /**
-         * 获取花费时间
+         * 获取花费毫秒数
          *
          * @return 花费毫秒数
          */
-        public String getSpend() {
-            long currentTimeMillis = System.currentTimeMillis();
-            long spendTimeMillis =  currentTimeMillis - startTimeMillis;
+        public long getSpend() {
+            return System.currentTimeMillis() - startTimeMillis;
+        }
+
+        /**
+         * 获取花费时间
+         *
+         * @return 花费时间字符串
+         */
+        public String getSpendString() {
+            long spendTimeMillis = getSpend();
             long milliseconds;
             String unit;
 
