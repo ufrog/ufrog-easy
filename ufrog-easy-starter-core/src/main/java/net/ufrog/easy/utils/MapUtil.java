@@ -16,6 +16,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MapUtil {
 
+    /** 构造函数<br>不允许外部构造 */
+    private MapUtil() {}
+
     @SuppressWarnings("unchecked")
     public static <K, V> Map<K, V> cast(Map<?, ?> map) {
         return (Map<K, V>) map;
