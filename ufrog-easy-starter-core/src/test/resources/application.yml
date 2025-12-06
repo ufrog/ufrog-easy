@@ -1,0 +1,9 @@
+easy:
+  cache:
+    prefix: easy_
+    type: ehcache
+    time-to-live: 14400
+logging:
+  level:
+    root: info
+    net.ufrog.easy.offices: trace

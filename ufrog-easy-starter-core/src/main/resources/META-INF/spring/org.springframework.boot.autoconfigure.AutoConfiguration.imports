@@ -1,0 +1,7 @@
+net.ufrog.easy.configurations.EasyAutoConfiguration
+net.ufrog.easy.configurations.ExceptionHandlerConfiguration
+net.ufrog.easy.configurations.JpaAutoConfiguration
+net.ufrog.easy.configurations.SwaggerAutoConfiguration
+net.ufrog.easy.JasyptController
+net.ufrog.easy.I18NController
+net.ufrog.easy.jpa.query.QueryUtil

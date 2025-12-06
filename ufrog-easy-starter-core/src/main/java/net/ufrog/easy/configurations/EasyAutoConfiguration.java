@@ -143,6 +143,7 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
     @Bean
     @ConditionalOnMissingBean(value = EasyMessageSource.class)
     public EasyMessageSource easyMessageSource() {
+        log.info("Register SpringMessageSource.");
         return new SpringMessageSource(i18nProperties);
     }
 

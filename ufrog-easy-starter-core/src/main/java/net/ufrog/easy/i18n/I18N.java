@@ -69,7 +69,7 @@ public class I18N {
             return locale;
         })).orElseGet(() -> {
             log.warn("Cannot get current application request, return default locale.");
-            return getSessionLocale();
+            return Locale.getDefault();
         });
     }
 
