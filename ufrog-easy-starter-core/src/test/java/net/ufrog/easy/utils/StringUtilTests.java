@@ -1,5 +1,6 @@
 package net.ufrog.easy.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import net.ufrog.easy.utils.beans.A;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import org.junit.Test;
  * @version 3.5.3, 2025-11-11
  * @since 3.5.3
  */
+@Slf4j
 public class StringUtilTests {
 
     private final static String A   = "";
@@ -46,9 +48,10 @@ public class StringUtilTests {
     @Test
     public void testRandom() {
         int len = 32;
-        String str = StringUtil.random(len, StringUtil.Set.SYMBOL, StringUtil.Set.UPPERCASE, StringUtil.Set.LOWERCASE, StringUtil.Set.NUMERIC);
+        String str = StringUtil.random(len, StringUtil.Set.UPPERCASE, StringUtil.Set.LOWERCASE, StringUtil.Set.NUMERIC);
         Assert.assertFalse(StringUtil.isEmpty(str));
         Assert.assertEquals(len, str.length());
+        log.info(str);
     }
 
     @Test
