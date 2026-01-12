@@ -1,5 +1,7 @@
 package net.ufrog.easy.contracts.requests;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -10,6 +12,7 @@ import java.io.Serializable;
  * @version 3.5.3, 2025-11-12
  * @since 3.5.3
  */
+@Schema(title = "请求")
 public class Request implements Serializable {
 
     @Serial

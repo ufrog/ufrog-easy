@@ -2,6 +2,7 @@ package net.ufrog.easy.contracts.requests;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Setter;
 import net.ufrog.easy.ApplicationContext;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +19,7 @@ import java.io.Serial;
  * @since 3.5.3
  */
 @Setter
+@Schema(title = "分页查询请求")
 public class PageQueryRequest extends QueryRequest {
 
     @Serial

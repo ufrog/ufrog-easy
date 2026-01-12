@@ -1,5 +1,6 @@
 package net.ufrog.easy.contracts.requests;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import net.ufrog.easy.utils.ObjectUtil;
 
 import java.io.Serial;
@@ -13,6 +14,7 @@ import java.util.function.Consumer;
  * @version 3.5.3, 2025-11-13
  * @since 3.5.3
  */
+@Schema(title = "数据请求")
 public class DataRequest extends Request {
 
     @Serial

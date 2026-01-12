@@ -8,6 +8,7 @@ import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.core.types.dsl.StringPath;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import net.ufrog.easy.exceptions.CommonException;
@@ -31,6 +32,7 @@ import java.util.Map;
  */
 @Getter
 @Setter
+@Schema(title = "查询请求")
 public class QueryRequest extends Request {
 
     @Serial
@@ -218,6 +220,7 @@ public class QueryRequest extends Request {
      */
     @Getter
     @Setter
+    @Schema(title = "查询准则")
     public static final class Criteria {
 
         /** 名称 */
