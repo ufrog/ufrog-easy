@@ -2,6 +2,6 @@ net.ufrog.easy.configurations.EasyAutoConfiguration
 net.ufrog.easy.configurations.ExceptionHandlerConfiguration
 net.ufrog.easy.configurations.JpaAutoConfiguration
 net.ufrog.easy.configurations.SwaggerAutoConfiguration
-net.ufrog.easy.JasyptController
-net.ufrog.easy.I18NController
+net.ufrog.easy.controllers.JasyptController
+net.ufrog.easy.controllers.I18NController
 net.ufrog.easy.jpa.query.QueryUtil

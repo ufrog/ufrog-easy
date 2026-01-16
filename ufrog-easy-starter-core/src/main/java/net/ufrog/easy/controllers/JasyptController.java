@@ -1,4 +1,4 @@
-package net.ufrog.easy;
+package net.ufrog.easy.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

@@ -1,4 +1,4 @@
-package net.ufrog.easy;
+package net.ufrog.easy.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -43,7 +43,7 @@ public class I18NController {
     @GetMapping("/locale/{localeStr}")
     @Operation(summary = "切换语言")
     @AuthorizeIgnore
-    public Response change(@PathVariable("localeStr") String localeStr) {
+    public Response change(@PathVariable String localeStr) {
         i18NChangeCallback.beforeChange(localeStr);
         I18N.setSessionLocale(localeStr);
         i18NChangeCallback.afterChange(localeStr);
