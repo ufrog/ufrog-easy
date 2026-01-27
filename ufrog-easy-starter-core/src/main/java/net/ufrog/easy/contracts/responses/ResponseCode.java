@@ -24,12 +24,12 @@ public class ResponseCode implements Serializable {
     @Serial
     private static final long serialVersionUID = 3995196855340592292L;
 
-    public static final ResponseCode OK                         = new ResponseCode("A000200", 200, true);
-    public static final ResponseCode ACCEPTED                   = new ResponseCode("A000202", 202, true);
-    public static final ResponseCode UNAUTHORIZED               = new ResponseCode("A000401", 401, false);
-    public static final ResponseCode FORBIDDEN                  = new ResponseCode("A000403", 403, false);
-    public static final ResponseCode NOT_FOUND                  = new ResponseCode("A000404", 404, false);
-    public static final ResponseCode INTERNAL_SERVER_ERROR      = new ResponseCode("A000500");
+    public static final ResponseCode OK                     = new ResponseCode("A000200", 200, true);
+    public static final ResponseCode ACCEPTED               = new ResponseCode("A000202", 202, true);
+    public static final ResponseCode UNAUTHORIZED           = new ResponseCode("A000401", 401, false);
+    public static final ResponseCode FORBIDDEN              = new ResponseCode("A000403", 403, false);
+    public static final ResponseCode NOT_FOUND              = new ResponseCode("A000404", 404, false);
+    public static final ResponseCode INTERNAL_SERVER_ERROR  = new ResponseCode("A000500");
 
     /** 代码 */
     @Schema(title = "代码")

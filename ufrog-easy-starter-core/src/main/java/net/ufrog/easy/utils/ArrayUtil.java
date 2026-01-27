@@ -1,5 +1,7 @@
 package net.ufrog.easy.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +14,7 @@ import java.util.List;
  * @version 3.5.3, 2025-11-10
  * @since 3.5.3
  */
+@Slf4j
 public class ArrayUtil {
 
     /** 构造函数<br>不允许外部构造 */
@@ -99,5 +102,40 @@ public class ArrayUtil {
             }
         }
         return list;
+    }
+
+    /**
+     * 拼接多个字节数组
+     *
+     * @param bsa 字节数组
+     * @return 拼接后的字节数组
+     */
+    public static byte[] concatenateByteArray(byte[]... bsa) {
+        int len = 0;
+        for (byte[] bytes: bsa) len += bytes.length;
+        log.trace("Count byte array len: {}.", len);
+
+        int pos = 0;
+        byte[] dest = new byte[len];
+        for (byte[] bytes: bsa) {
+            System.arraycopy(bytes, 0, dest, pos, bytes.length);
+            pos += bytes.length;
+        }
+        return dest;
+    }
+
+    /**
+     * 截取字节数组
+     *
+     * @param bytes 字节数组
+     * @param begin 开始位置
+     * @param end 结束位置
+     * @return 截取部分字节数组
+     */
+    public static byte[] subByteArray(final byte[] bytes, int begin, int end) {
+        int len = end - begin;
+        byte[] sub = new byte[len];
+        System.arraycopy(bytes, begin, sub, 0, len);
+        return sub;
     }
 }
