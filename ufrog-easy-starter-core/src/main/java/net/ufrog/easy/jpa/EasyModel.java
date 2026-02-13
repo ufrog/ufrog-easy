@@ -34,6 +34,7 @@ import java.util.Date;
 public class EasyModel implements Serializable, Persistable<Long> {
 
     public static final String[] AUDITOR_FIELDS = ObjectUtil.getAllDeclaredFields(EasyModel.class).stream().map(Field::getName).toArray(String[]::new);
+    public static final String SQL_RESTRICTION  = "dc_is_deleted = " + DictUtil.Bool.FALSE;
     public static final Long NULL               = -1L;
 
     @Serial
