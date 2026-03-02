@@ -492,7 +492,42 @@ public class CacheUtil {
     }
 
     /**
-     * 缓存工具
+     * 封装
+     *
+     * @param value 内容
+     * @return 缓存封装
+     * @param <T> 内容范型
+     */
+    public static <T> SupplierWrapper<T> wrap(T value) {
+        return new SupplierWrapper<>(value);
+    }
+
+    /**
+     * 封装
+     *
+     * @param value 内容
+     * @param timeToLive 生存时间
+     * @return 缓存封装
+     * @param <T> 内容范型
+     */
+    public static <T> SupplierWrapper<T> wrap(T value, int timeToLive) {
+        return new SupplierWrapper<>(value, timeToLive);
+    }
+
+    /**
+     * 封装
+     *
+     * @param value 内容
+     * @param duration 有效期
+     * @return 缓存封装
+     * @param <T> 内容范型
+     */
+    public static <T> SupplierWrapper<T> wrap(T value, String duration) {
+        return new SupplierWrapper<>(value, DateTimeUtil.toSeconds(duration));
+    }
+
+    /**
+     * 缓存封装
      *
      * @author ultrafrog, ufrog.net@gmail.com
      * @version 3.5.3, 2025-11-10
