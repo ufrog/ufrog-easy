@@ -19,6 +19,9 @@ public class EasyProperties {
     /** 是否生产 */
     private boolean isProduction = true;
 
+    /** 应用编号 */
+    private Long applicationId;
+
     /** 密钥 */
     private String secret;
 }

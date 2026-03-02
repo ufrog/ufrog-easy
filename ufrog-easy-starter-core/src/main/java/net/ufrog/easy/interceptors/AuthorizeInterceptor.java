@@ -48,6 +48,6 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         } else {
             log.warn("Unknown error occurred, returning {}.", userId);
         }
-        throw new ResponseException(ResponseCode.FORBIDDEN);
+        throw new ResponseException(ResponseCode.UNAUTHORIZED);
     }
 }
