@@ -21,7 +21,7 @@ import java.util.Optional;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Schema(title = "字典元素响应")
-public class DictElementResponse<T extends Serializable> extends DataResponse {
+public class DictElementResponse<T extends Serializable> extends Response {
 
     @Serial
     private static final long serialVersionUID = 5098157715812165601L;

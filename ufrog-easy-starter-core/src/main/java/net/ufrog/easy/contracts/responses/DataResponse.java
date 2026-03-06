@@ -34,17 +34,6 @@ public class DataResponse extends Response {
     private long id;
 
     /**
-     * 设置是否为内部响应
-     *
-     * @param internal 是否内部响应
-     * @return 数据响应
-     */
-    public <R extends DataResponse> R internal(boolean internal) {
-        if (internal) setHeader(null);
-        return ObjectUtil.cast(this);
-    }
-
-    /**
      * 基于对象创建响应
      *
      * @param bean 对象

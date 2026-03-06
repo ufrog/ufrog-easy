@@ -35,6 +35,17 @@ public class Response implements Serializable {
     }
 
     /**
+     * 设置是否为内部响应
+     *
+     * @param internal 是否内部响应
+     * @return 数据响应
+     */
+    public <R extends Response> R internal(boolean internal) {
+        if (internal) setHeader(null);
+        return ObjectUtil.cast(this);
+    }
+
+    /**
      * 新建实例
      *
      * @param code 响应代码
