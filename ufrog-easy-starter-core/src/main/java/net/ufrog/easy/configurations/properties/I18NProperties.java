@@ -24,4 +24,10 @@ public class I18NProperties {
 
     /** 编码 */
     private String encoding = "UTF-8";
+
+    /** 地区存储方法 */
+    private String localeType = "session";
+
+    /** 地区标识 */
+    private String localeKey = "Accept-Language";
 }

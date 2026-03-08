@@ -17,9 +17,7 @@ import net.ufrog.easy.contracts.QueryRequestArgumentResolver;
 import net.ufrog.easy.exceptions.CommonException;
 import net.ufrog.easy.exceptions.InvalidPropertyException;
 import net.ufrog.easy.filters.CorsFilter;
-import net.ufrog.easy.i18n.EasyMessageSource;
-import net.ufrog.easy.i18n.I18NChangeCallback;
-import net.ufrog.easy.i18n.SpringMessageSource;
+import net.ufrog.easy.i18n.*;
 import net.ufrog.easy.interceptors.ApplicationInterceptor;
 import net.ufrog.easy.interceptors.AuthorizeInterceptor;
 import net.ufrog.easy.interceptors.PropertiesLoadInterceptor;
@@ -145,6 +143,19 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
     public EasyMessageSource easyMessageSource() {
         log.info("Register SpringMessageSource.");
         return new SpringMessageSource(i18nProperties);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(value = EasyLocaleSource.class)
+    public EasyLocaleSource easyLocaleSource() {
+        log.info("Register locale source.");
+        if (StringUtil.equals("session", i18nProperties.getLocaleType())) {
+            return new SessionLocaleSource();
+        } else if (StringUtil.equals("header", i18nProperties.getLocaleType())) {
+            return new HeaderLocaleSource(i18nProperties.getLocaleKey());
+        } else {
+            throw new InvalidPropertyException("easy.i18n", "locale-type", i18nProperties.getLocaleType());
+        }
     }
 
     @Bean

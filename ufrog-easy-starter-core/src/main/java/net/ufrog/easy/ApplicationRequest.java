@@ -154,6 +154,16 @@ public class ApplicationRequest {
     }
 
     /**
+     * 读取头信息
+     *
+     * @param key 头信息标识
+     * @return 头信息
+     */
+    public String getHeader(final String key) {
+        return httpServletRequest.getHeader(key);
+    }
+
+    /**
      * 读取文件映射
      *
      * @return 文件映射

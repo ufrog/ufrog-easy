@@ -20,11 +20,13 @@ import java.util.stream.Collectors;
 @Slf4j
 public class I18N {
 
-    private static final String SESSION_LOCALE_KEY                  = "session.locale";
     private static final Map<String, Integer> MULTI_MESSAGE_SIZE    = new ConcurrentHashMap<>();
 
     /** 消息来源接口 */
     private static EasyMessageSource messageSource;
+
+    /** 地区来源接口 */
+    private static EasyLocaleSource localeSource;
 
     /**
      * 读取消息
@@ -53,47 +55,34 @@ public class I18N {
      * @return 消息文本
      */
     public static String get(final String key, final Object... args) {
-        return get(key, args, getSessionLocale());
+        return get(key, args, getLocale());
     }
 
     /**
-     * 读取会话地区
+     * 读取地区
      *
-     * @return 会话地区
+     * @return 地区
      */
-    public static Locale getSessionLocale() {
-        return ApplicationRequest.getCurrent().map(v -> v.getSession(SESSION_LOCALE_KEY, Locale.class).orElseGet(() -> {
-            log.warn("There isn't a session locale available, using default.");
-            Locale locale = getMessageSource().getDefaultLocale();
-            setSessionLocale(locale);
-            return locale;
-        })).orElseGet(() -> {
-            log.warn("Cannot get current application request, return default locale.");
-            return Locale.getDefault();
-        });
+    public static Locale getLocale() {
+        return getLocaleSource().getLocale();
     }
 
     /**
-     * 设置会话地区
+     * 设置地区
      *
      * @param locale 地区
      */
-    public static void setSessionLocale(final Locale locale) {
-        Optional<ApplicationRequest> optional = ApplicationRequest.getCurrent();
-        if (optional.isPresent()) {
-            optional.get().setSession(SESSION_LOCALE_KEY, locale);
-        } else {
-            log.warn("Cannot get current application and set locale failure.");
-        }
+    public static void setLocale(final Locale locale) {
+        getLocaleSource().setLocale(locale);
     }
 
     /**
-     * 设置会话地区
+     * 设置地区
      *
      * @param localeStr 地区字符串
      */
-    public static void setSessionLocale(final String localeStr) {
-        setSessionLocale(parseLocale(localeStr));
+    public static void setLocale(final String localeStr) {
+        setLocale(parseLocale(localeStr));
     }
 
     /**
@@ -121,6 +110,16 @@ public class I18N {
     public static EasyMessageSource getMessageSource() {
         if (messageSource == null) messageSource = ApplicationContext.getBean(EasyMessageSource.class);
         return messageSource;
+    }
+
+    /**
+     * 获取地区接口
+     *
+     * @return 地区接口
+     */
+    public static EasyLocaleSource getLocaleSource() {
+        if (localeSource == null) localeSource = ApplicationContext.getBean(EasyLocaleSource.class);
+        return localeSource;
     }
 
     /**

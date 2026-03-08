@@ -45,7 +45,7 @@ public class I18NController {
     @AuthorizeIgnore
     public Response change(@PathVariable String localeStr) {
         i18NChangeCallback.beforeChange(localeStr);
-        I18N.setSessionLocale(localeStr);
+        I18N.setLocale(localeStr);
         i18NChangeCallback.afterChange(localeStr);
         return new Response();
     }
@@ -60,11 +60,11 @@ public class I18NController {
     @AuthorizeIgnore
     public SimpleResponse<HashMap<String, String>> getMessages() {
         Map<String, String> defaultMessages = I18N.getMessageSource().getAll(null);
-        Map<String, String> localeMessages = I18N.getMessageSource().getAll(I18N.getSessionLocale());
+        Map<String, String> localeMessages = I18N.getMessageSource().getAll(I18N.getLocale());
 
         defaultMessages.putAll(localeMessages);
         if (log.isDebugEnabled()) {
-            log.debug(">>>>>>>>>> {}", I18N.getSessionLocale());
+            log.debug(">>>>>>>>>> {}", I18N.getLocale());
             for (Map.Entry<String, String> entry : defaultMessages.entrySet()) {
                 log.debug(">>>>>>>>>>>> {}: {}", entry.getKey(), entry.getValue());
             }
