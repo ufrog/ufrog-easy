@@ -151,6 +151,25 @@ public class StringUtil {
     }
 
     /**
+     * 脱敏
+     *
+     * @param str 字符串
+     * @param prefix 前缀长度
+     * @param suffix 后缀长度
+     * @param mask 遮罩
+     * @return 脱敏后字符串
+     */
+    public static String desensitize(String str, int prefix, int suffix, String mask) {
+        if (isEmpty(str) || str.length() <= prefix + suffix) {
+            return str;
+        } else {
+            return str.substring(0, prefix) +
+                    mask.repeat(str.length() - prefix - suffix) +
+                    str.substring(str.length() - suffix);
+        }
+    }
+
+    /**
      * 字串集合
      *
      * @author ultrafrog, ufrog.net@gmail.com
