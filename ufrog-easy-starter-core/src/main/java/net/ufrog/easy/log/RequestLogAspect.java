@@ -200,7 +200,7 @@ public class RequestLogAspect {
      */
     private void removeIgnore(final JsonNode node, String ignore) {
         if (node.isArray()) {
-            for (JsonNode n : node) {
+            for (JsonNode n: node) {
                 removeIgnore(n, ignore);
             }
         } else {
