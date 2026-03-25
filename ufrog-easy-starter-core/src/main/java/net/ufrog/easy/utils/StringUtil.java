@@ -64,6 +64,18 @@ public class StringUtil {
     }
 
     /**
+     * 判断字符串为空后执行
+     *
+     * @param str 字符串
+     * @param runnable 运行方法
+     */
+    public static void ifEmpty(final String str, final Runnable runnable) {
+        if (isEmpty(str)) {
+            runnable.run();
+        }
+    }
+
+    /**
      * 判断字符串相同
      *
      * @param one 字符串

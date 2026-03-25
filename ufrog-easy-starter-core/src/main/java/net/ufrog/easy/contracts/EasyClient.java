@@ -90,14 +90,14 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      *
      * @param request 数据请求
      */
-    default void preCreate(REQ request) {}
+    default void onBeforeCreate(REQ request) {}
 
     /**
      * 创建后回调
      *
      * @param response 数据响应
      */
-    default void postCreate(RESP response) {}
+    default void onAfterCreate(RESP response) {}
 
     /**
      * 更新前回调
@@ -105,26 +105,26 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      * @param id 数据编号
      * @param request 数据请求
      */
-    default void preUpdate(long id, REQ request) {}
+    default void onBeforeUpdate(long id, REQ request) {}
 
     /**
      * 更新后回调
      *
      * @param response 数据响应
      */
-    default void postUpdate(RESP response) {}
+    default void onAfterUpdate(RESP response) {}
 
     /**
      * 删除前回调
      *
      * @param id 数据编号
      */
-    default void preDelete(long id) {}
+    default void onBeforeDelete(long id) {}
 
     /**
      * 删除后回调
      *
      * @param id 数据编号
      */
-    default void postDelete(long id) {}
+    default void onAfterDelete(long id) {}
 }

@@ -78,28 +78,28 @@ public class EasyController<T extends EasyModel, RESP extends DataResponse, REQ 
 
     @Override
     public RESP create(REQ request) {
-        preCreate(request);
+        onBeforeCreate(request);
         T entity = fromRequest(request);
         RESP response = toResponse(getService().save(entity), false, getMessageKeyPrefix() + ".create.success");
-        postCreate(response);
+        onAfterCreate(response);
         return response;
     }
 
     @Override
     public RESP update(long id, REQ request) {
-        preUpdate(id, request);
+        onBeforeUpdate(id, request);
         T entity = fromRequest(request);
         RESP response = toResponse(getService().update(id, entity), false, getMessageKeyPrefix() + ".update.success");
-        postUpdate(response);
+        onAfterUpdate(response);
         return response;
     }
 
     @Override
     public Response delete(long id) {
         Response resp = new Response();
-        preDelete(id);
+        onBeforeDelete(id);
         getService().logicalDeleteById(id);
-        postDelete(id);
+        onAfterDelete(id);
         resp.getHeader().setMessage(I18N.get(getMessageKeyPrefix() + ".delete.success"));
         return resp;
     }
@@ -205,7 +205,7 @@ public class EasyController<T extends EasyModel, RESP extends DataResponse, REQ 
             }
             messageKeyPrefix = builder.toString();
         }
-        return messageKeyPrefix;
+        return messageKeyPrefix.toLowerCase();
     }
 
     /** 解析并设置各类型 */
