@@ -43,7 +43,7 @@ public class JasyptController {
      * @return 加密响应
      */
     @GetMapping("/encrypt")
-    @Operation(summary = "参数加密", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "参数加密")
     public SimpleResponse<String> encrypt(@Parameter(description = "待加密参数", required = true, in = ParameterIn.QUERY) String value) {
         if (enabled) {
             return new SimpleResponse<>("ENC(" + stringEncryptor.encrypt(value) + ")");
@@ -61,7 +61,7 @@ public class JasyptController {
      * @return 解密响应
      */
     @GetMapping("/decrypt")
-    @Operation(summary = "参数解密", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "参数解密")
     public SimpleResponse<String> decrypt(@Parameter(description = "待解密参数", required = true, in = ParameterIn.QUERY) String value) {
         if (enabled) {
             String val = (value.startsWith("ENC(") && value.endsWith(")")) ? value.substring("ENC(".length(), value.length() - 1) : value;

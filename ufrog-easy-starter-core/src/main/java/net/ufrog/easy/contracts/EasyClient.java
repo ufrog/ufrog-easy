@@ -30,7 +30,7 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      * @param id 数据编号
      * @return 数据响应
      */
-    @Operation(summary = "查询单个数据", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "查询单个数据")
     @RequestMapping(value = "/find/{id}", method = RequestMethod.GET)
     RESP findOne(@PathVariable long id);
 
@@ -40,7 +40,7 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      * @param request 查询请求
      * @return 数据列表响应
      */
-    @Operation(summary = "查询列表数据", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "查询列表数据")
     @RequestMapping(value = "/find/list", method = RequestMethod.GET)
     ListResponse<RESP> findList(QueryRequest request);
 
@@ -50,7 +50,7 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      * @param request 分页查询请求
      * @return 数据分页响应
      */
-    @Operation(summary = "查询分页数据", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "查询分页数据")
     @RequestMapping(value = "/find/page", method = RequestMethod.GET)
     PageResponse<RESP> findPage(PageQueryRequest request);
 
@@ -60,7 +60,7 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      * @param request 数据请求
      * @return 数据响应
      */
-    @Operation(summary = "创建数据", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "创建数据")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     RESP create(@RequestBody REQ request);
 
@@ -71,7 +71,7 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      * @param request 数据请求
      * @return 数据响应
      */
-    @Operation(summary = "更新数据", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "更新数据")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
     RESP update(@PathVariable long id, @RequestBody REQ request);
 
@@ -81,7 +81,7 @@ public interface EasyClient<RESP extends DataResponse, REQ extends DataRequest> 
      * @param id 数据编号
      * @return 响应
      */
-    @Operation(summary = "删除数据", security = @SecurityRequirement(name = Authorize.KEY_AUTHORIZATION))
+    @Operation(summary = "删除数据")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
     Response delete(@PathVariable long id);
 

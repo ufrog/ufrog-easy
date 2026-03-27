@@ -28,7 +28,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/i18n")
-@Tag(name = "国际化服务")
+@Tag(name = "国际化服务", description = "提供国际化相关服务")
 public class I18NController {
 
     /** 国际化语言切换回调接口 */

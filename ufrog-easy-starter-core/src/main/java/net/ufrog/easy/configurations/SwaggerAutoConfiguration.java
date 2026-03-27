@@ -4,6 +4,7 @@ import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import net.ufrog.easy.authorizes.Authorize;
 import net.ufrog.easy.configurations.properties.SwaggerProperties;
@@ -42,6 +43,7 @@ public class SwaggerAutoConfiguration {
     @Bean
     public OpenAPI openAPI() {
         // https://juejin.cn/post/7214015651828006967
+        SecurityRequirement securityRequirement = new SecurityRequirement().addList(Authorize.KEY_AUTHORIZATION);
         SecurityScheme securityScheme = new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme(Authorize.KEY_TOKEN_BEARER).bearerFormat(FORMAT_SCHEME);
         Components components = new Components().addSecuritySchemes(Authorize.KEY_AUTHORIZATION, securityScheme);
         Info info = new Info().title(swaggerProperties.getTitle()).description(swaggerProperties.getDescription()).version(swaggerProperties.getVersion());
@@ -50,6 +52,6 @@ public class SwaggerAutoConfiguration {
         if (!StringUtil.isEmpty(swaggerProperties.getAuthor())) {
             info.contact(new Contact().name(swaggerProperties.getAuthor()).email(swaggerProperties.getEmail()).url(swaggerProperties.getUrl()));
         }
-        return new OpenAPI().components(components).info(info);
+        return new OpenAPI().addSecurityItem(securityRequirement).components(components).info(info);
     }
 }
