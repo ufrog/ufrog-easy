@@ -1,0 +1,64 @@
+ufrog-easy
+Copyright 2025-2026 ultrafrog
+
+This product includes software developed by the following third parties:
+
+Spring Boot
+Copyright 2012-2024 VMware, Inc. or its affiliates
+Licensed under Apache License 2.0
+
+QueryDSL
+Copyright 2015-2024 QueryDSL
+Licensed under Apache License 2.0
+
+Auth0 java-jwt
+Copyright 2015-2024 Auth0, Inc.
+Licensed under MIT License
+
+Apache Commons Lang
+Copyright 2001-2024 The Apache Software Foundation
+Licensed under Apache License 2.0
+
+Apache POI
+Copyright 2001-2024 The Apache Software Foundation
+Licensed under Apache License 2.0
+
+Flying Saucer (xhtmlrenderer)
+Copyright 2004-2024 The Flying Saucer Project
+Licensed under GNU Lesser General Public License (LGPL)
+
+jsoup
+Copyright 2009-2024 Jonathan Hedley
+Licensed under MIT License
+
+Springdoc OpenAPI
+Copyright 2018-2024 springdoc
+Licensed under Apache License 2.0
+
+Jasypt Spring Boot Starter
+Copyright 2013-2024 Ulio Moschea
+Licensed under Apache License 2.0
+
+Ehcache
+Copyright 2002-2024 Software AG
+Licensed under Apache License 2.0
+
+Jedis
+Copyright 2011-2024 Jonathan Leibiusky
+Licensed under MIT License
+
+FreeMarker
+Copyright 2002-2024 The Apache Software Foundation
+Licensed under Apache License 2.0
+
+Lombok
+Copyright 2009-2024 The Project Lombok Authors
+Licensed under MIT License
+
+Sequence (cn.izern)
+Copyright 2019-2024 izern
+Licensed under Apache License 2.0
+
+Jakarta EE API
+Copyright 2019-2024 Eclipse Foundation
+Licensed under Eclipse Public License 2.0
