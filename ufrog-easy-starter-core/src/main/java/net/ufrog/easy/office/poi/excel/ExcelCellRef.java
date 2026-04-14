@@ -1,4 +1,4 @@
-package net.ufrog.easy.offices.poi.excel;
+package net.ufrog.easy.office.poi.excel;
 
 import lombok.Getter;
 import net.ufrog.easy.utils.StringUtil;

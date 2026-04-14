@@ -1,4 +1,4 @@
-package net.ufrog.easy.offices;
+package net.ufrog.easy.office;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

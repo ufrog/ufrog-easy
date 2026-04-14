@@ -193,7 +193,7 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
         FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>();
         CorsFilter.AllowOriginProvider allowOriginProvider = StringUtil.isEmpty(allowedOriginProvider) ?
                 new CorsFilter.SimpleAllowOriginProvider(allowedOrigins) :
-                net.ufrog.easy.ApplicationContext.getBean(allowedOriginProvider, CorsFilter.AllowOriginProvider.class);
+                applicationContext.getBean(allowedOriginProvider, CorsFilter.AllowOriginProvider.class);
 
         bean.setFilter(new CorsFilter(allowOriginProvider, allowedMethods, maxAge));
         bean.addUrlPatterns("/*");
@@ -206,7 +206,9 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
     @Bean
     @ConditionalOnProperty(prefix = "easy.request-log", name = "enabled", havingValue = "true")
     public RequestLogAspect requestLogAspect() {
-        RequestLogProcessor requestLogProcessor = ObjectUtil.newInstance(requestLogProperties.getProcessor());
+        RequestLogProcessor requestLogProcessor = StringUtil.isEmpty(requestLogProperties.getProcessorBeanName()) ?
+                ObjectUtil.newInstance(requestLogProperties.getProcessorClass()) :
+                applicationContext.getBean(requestLogProperties.getProcessorBeanName(), RequestLogProcessor.class);
         return new RequestLogAspect(requestLogProperties, requestLogProcessor);
     }
 
@@ -240,7 +242,7 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
         if (interceptorProperties.getPropertiesLoad().isEnabled()) {
             PropertiesLoadInterceptor.PropertiesLoader propertiesLoader = null;
             if (!StringUtil.isEmpty(interceptorProperties.getPropertiesLoad().getLoaderBeanName())) {
-                propertiesLoader = net.ufrog.easy.ApplicationContext.getBean(interceptorProperties.getPropertiesLoad().getLoaderBeanName(), PropertiesLoadInterceptor.PropertiesLoader.class);
+                propertiesLoader = applicationContext.getBean(interceptorProperties.getPropertiesLoad().getLoaderBeanName(), PropertiesLoadInterceptor.PropertiesLoader.class);
             } else if (interceptorProperties.getPropertiesLoad().getLoaderClass() != null) {
                 propertiesLoader = ObjectUtil.newInstance(interceptorProperties.getPropertiesLoad().getLoaderClass());
             }

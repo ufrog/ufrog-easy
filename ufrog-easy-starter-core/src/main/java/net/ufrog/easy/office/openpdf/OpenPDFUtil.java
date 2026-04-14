@@ -1,10 +1,10 @@
-package net.ufrog.easy.offices.openpdf;
+package net.ufrog.easy.office.openpdf;
 
 import com.lowagie.text.pdf.BaseFont;
 import lombok.extern.slf4j.Slf4j;
 import net.ufrog.easy.ApplicationContext;
 import net.ufrog.easy.exceptions.CommonException;
-import net.ufrog.easy.offices.FontResolver;
+import net.ufrog.easy.office.FontResolver;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Entities;

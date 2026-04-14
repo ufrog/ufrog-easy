@@ -1,8 +1,8 @@
-package net.ufrog.easy.offices;
+package net.ufrog.easy.office;
 
 import lombok.extern.slf4j.Slf4j;
 import net.ufrog.easy.exceptions.CommonException;
-import net.ufrog.easy.offices.openpdf.OpenPDFUtil;
+import net.ufrog.easy.office.openpdf.OpenPDFUtil;
 import net.ufrog.easy.utils.DateTimeUtil;
 import net.ufrog.easy.utils.FileUtil;
 import org.junit.Before;

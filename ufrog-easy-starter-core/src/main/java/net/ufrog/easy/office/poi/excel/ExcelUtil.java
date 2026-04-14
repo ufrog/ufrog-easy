@@ -1,4 +1,4 @@
-package net.ufrog.easy.offices.poi.excel;
+package net.ufrog.easy.office.poi.excel;
 
 import lombok.extern.slf4j.Slf4j;
 import net.ufrog.easy.exceptions.CommonException;

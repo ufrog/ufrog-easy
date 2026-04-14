@@ -1,12 +1,59 @@
 easy:
   # noinspection SpringBootApplicationYaml
-  is-production: true
-  secret:
-  cache:
-    type: ehcache
-    prefix: easy_
-    time-to-live: 14400
-    host: 127.0.0.1
-    port: 6379
-    password:
-    database: 0
+  is-production: true             #是否生成环境
+  applicationId:                  #应用编号
+  secret:                         #应用密钥
+  cache:                          #缓存相关
+    type: ehcache                 #缓存类型，内建ehcache和redis实现，默认ehcache
+    prefix: easy_                 #缓存前缀，默认easy_
+    time-to-live: 14400           #默认缓存时间，默认4h
+    host: 127.0.0.1               #缓存地址，目前仅redis有效，默认127.0.0.1
+    port: 6379                    #缓存端口，目前仅redis有效，默认6379
+    password:                     #缓存密码，目前仅redis有效
+    database: 0                   #缓存数据库，目前仅redis有效，默认0
+  filter:                         #过滤器相关
+    cors:                         #跨域请求过滤器相关
+      enabled: false              #是否启用，默认false
+      allowed-origins:            #允许的地址，默认http://localhost，可以追加
+        - http://localhost
+      allowed-origin-provider:    #判断允许地址的提供器，默认SimpleAllowOriginProvider
+      allowed-methods:            #允许的请求方法，默认所有方法
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+        - OPTIONS
+      max-age: 18000              #生命周期，默认18000秒
+  i18n:                           #国际化相关
+    type: spring                  #国际化类型，默认Spring实现，目前仅支持Spring实现
+    basename: messages            #国际化文件名称，默认messages，如果多个文件用西文,分割
+    encoding: UTF-8               #国际化文件编码，默认UTF-8
+    locale-type: session          #国际化本地类型，默认session，支持session和header实现
+    locale-key: Accept-Language   #国际化header头，仅header时有效，默认Accept-Language
+  interceptors:
+    authorize:
+      enabled: false
+      type: jwt
+      ignore-uris:
+      filters:
+    properties-load:
+      enabled: false
+      loader-class:
+      loader-bean-name:
+  request-log:
+    enabled: false
+    methods:
+      - POST
+      - PUT
+      - PATCH
+      - DELETE
+    processor-class: net.ufrog.easy.log.SimpleRequestLogProcessor
+    processor-bean-name:
+  swagger:
+    author:
+    email:
+    url:
+    title: Swagger API
+    description: Swagger API
+    version: v1.0

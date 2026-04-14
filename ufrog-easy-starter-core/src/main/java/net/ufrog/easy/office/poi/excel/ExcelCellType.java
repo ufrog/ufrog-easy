@@ -1,4 +1,4 @@
-package net.ufrog.easy.offices.poi.excel;
+package net.ufrog.easy.office.poi.excel;
 
 /**
  * 表格单元格类型

@@ -22,8 +22,11 @@ public class RequestLogProperties {
     private boolean enabled = false;
 
     /** 请求方法 */
-    private String[] methods = {"POST", "PUT", "DELETE"};
+    private String[] methods = {"POST", "PUT", "PATCH", "DELETE"};
 
     /** 处理实现 */
-    private Class<? extends RequestLogProcessor> processor = SimpleRequestLogProcessor.class;
+    private Class<? extends RequestLogProcessor> processorClass = SimpleRequestLogProcessor.class;
+
+    /** 处理器对象名称 */
+    private String processorBeanName;
 }

@@ -1,10 +1,9 @@
-package net.ufrog.easy.offices.poi.excel;
+package net.ufrog.easy.office.poi.excel;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.xssf.model.SharedStringsTable;
 import org.apache.poi.xssf.model.StylesTable;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
