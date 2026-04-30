@@ -60,7 +60,7 @@ public class ApplicationRequest {
     /** 用户编号 */
     @Getter
     @Setter
-    private long userId;
+    private Long userId;
 
     /**
      * 构造函数
@@ -289,7 +289,7 @@ public class ApplicationRequest {
      *
      * @return 用户编号
      */
-    public static long getCurrentUser() {
+    public static Long getCurrentUser() {
         return getCurrent().orElseThrow(UnauthorizedException::new).getUserId();
     }
 
