@@ -24,6 +24,8 @@ import net.ufrog.easy.interceptors.PropertiesLoadInterceptor;
 import net.ufrog.easy.json.LongToStringSerializer;
 import net.ufrog.easy.log.RequestLogAspect;
 import net.ufrog.easy.log.RequestLogProcessor;
+import net.ufrog.easy.storage.LocalStorage;
+import net.ufrog.easy.storage.Storage;
 import net.ufrog.easy.utils.ObjectUtil;
 import net.ufrog.easy.utils.StringUtil;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
@@ -55,7 +57,7 @@ import java.util.List;
 @Configuration
 @AutoConfigureBefore(name = {"org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration"})
 @EnableConfigurationProperties({CacheProperties.class, EasyProperties.class, FilterProperties.class,
-        I18NProperties.class, InterceptorProperties.class, RequestLogProperties.class})
+        I18NProperties.class, InterceptorProperties.class, RequestLogProperties.class, StorageProperties.class})
 public class EasyAutoConfiguration implements WebMvcConfigurer {
 
     /** Springframework application context */
@@ -79,6 +81,9 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
     /** 请求日志参数 */
     private final RequestLogProperties requestLogProperties;
 
+    /** 存储参数 */
+    private final StorageProperties storageProperties;
+
     /**
      * 构造函数
      *
@@ -89,6 +94,7 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
      * @param i18nProperties I18N properties
      * @param interceptorProperties Interceptor properties
      * @param requestLogProperties Request log properties
+     * @param storageProperties Storage properties
      */
     public EasyAutoConfiguration(ApplicationContext applicationContext,
                                  CacheProperties cacheProperties,
@@ -96,7 +102,8 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
                                  FilterProperties filterProperties,
                                  I18NProperties i18nProperties,
                                  InterceptorProperties interceptorProperties,
-                                 RequestLogProperties requestLogProperties) {
+                                 RequestLogProperties requestLogProperties,
+                                 StorageProperties storageProperties) {
         this.applicationContext = applicationContext;
         this.cacheProperties = cacheProperties;
         this.easyProperties = easyProperties;
@@ -104,6 +111,7 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
         this.i18nProperties = i18nProperties;
         this.interceptorProperties = interceptorProperties;
         this.requestLogProperties = requestLogProperties;
+        this.storageProperties = storageProperties;
     }
 
     @PostConstruct
@@ -210,6 +218,17 @@ public class EasyAutoConfiguration implements WebMvcConfigurer {
                 ObjectUtil.newInstance(requestLogProperties.getProcessorClass()) :
                 applicationContext.getBean(requestLogProperties.getProcessorBeanName(), RequestLogProcessor.class);
         return new RequestLogAspect(requestLogProperties, requestLogProcessor);
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = "easy.storage", name = "enabled", havingValue = "true")
+    @ConditionalOnMissingBean(Storage.class)
+    public Storage storage() {
+        if (StringUtil.equals("local", storageProperties.getType())) {
+            return new LocalStorage(StringUtil.getOrDefault(storageProperties.getLocalPath(), System.getProperty("java.io.tmpdir")));
+        } else {
+            throw new InvalidPropertyException("easy.storage", "type", storageProperties.getType());
+        }
     }
 
     /**

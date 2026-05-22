@@ -50,6 +50,10 @@ easy:
       - DELETE
     processor-class: net.ufrog.easy.log.SimpleRequestLogProcessor
     processor-bean-name:
+  storage:
+    enabled: false
+    type: local
+    local-path:
   swagger:
     author:
     email:
