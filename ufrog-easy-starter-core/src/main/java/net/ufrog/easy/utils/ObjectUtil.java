@@ -125,7 +125,7 @@ public class ObjectUtil {
                     log.trace("Cannot find field {} from source type {}.", k, source.getClass());
                 }
             } else {
-                log.debug("Field '{}' is excluded.", k);
+                log.trace("Field '{}' is excluded.", k);
             }
         });
         return dest;
