@@ -4,6 +4,8 @@ import net.ufrog.easy.exceptions.CommonException;
 
 import java.io.*;
 import java.net.URLConnection;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 文件工具
@@ -107,5 +109,17 @@ public class FileUtil {
         } catch (IOException e) {
             throw CommonException.newInstance(e);
         }
+    }
+
+    /**
+     * 读取扩展名
+     *
+     * @param filename 文件名
+     * @return 扩展名
+     */
+    public static String getExtension(String filename) {
+        Matcher matcher = Pattern.compile("^.*\\\\.([^.]+)$").matcher(filename);
+        if (matcher.matches()) return matcher.group(1);
+        return null;
     }
 }
