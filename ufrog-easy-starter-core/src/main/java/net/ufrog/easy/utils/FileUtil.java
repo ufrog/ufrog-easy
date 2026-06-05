@@ -118,7 +118,7 @@ public class FileUtil {
      * @return 扩展名
      */
     public static String getExtension(String filename) {
-        Matcher matcher = Pattern.compile("^.*\\\\.([^.]+)$").matcher(filename);
+        Matcher matcher = Pattern.compile("^.*\\.([^.]+)$").matcher(filename);
         if (matcher.matches()) return matcher.group(1);
         return null;
     }
